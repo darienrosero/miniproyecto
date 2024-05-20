@@ -28,13 +28,13 @@ const Nav = () => {
   return (
     <nav className='nav'>
 
-      <img src="src/logos/logo.png" alt="" className='navLogo' />
+      <img src="/logos/logo.png" alt="" className='navLogo' />
 
       <div className='serch'>
 
         <input id='location' className='buttonSerch' placeholder="Ubicación" value={location} onChange={cambioLocation}/>
         <input id='guest' type='number' min={0} className='buttonSerch' placeholder="Add guests" value={guest} onChange={cambioGuest}/>
-        <button id='confirm' className='buttonSerch' onClick={buttonSearch}> <img src="src/logos/search.png" /></button>
+        <button id='confirm' className='buttonSerch' onClick={buttonSearch}> <img src="/logos/search.png" /></button>
 
       </div>
     </nav>
