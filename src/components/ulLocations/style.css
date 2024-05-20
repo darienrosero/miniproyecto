@@ -1,0 +1,11 @@
+#availablePlaces{
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    font-family: "Montserrat", sans-serif;
+}
+
+#stays{
+    font-weight: 700;
+    font-size: 25px;
+}
