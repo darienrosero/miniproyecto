@@ -24,7 +24,12 @@
     width: 123px;
     border-color: rgba(242, 242, 242, 1);
     font-family: "Mulish", sans-serif;
-} 
+    cursor: pointer;
+}
+
+#maps{
+    width: 10px;
+}
 
 #location{
     border-start-start-radius: 16px;
@@ -49,5 +54,4 @@
     background-color: transparent;
     border: none;
     outline: none;
-    cursor: pointer;
 }

@@ -6,10 +6,13 @@ import UlLocation from './components/ulLocations'
 
 function App() {
   const [data, setData] = useState([])
+  const [filterCard, setFilter] = useState([])
+
   async function getData() {
     const rs = await fetch('./stays.json')
     const rsJson = await rs.json()
     setData(rsJson)
+    setFilter(rsJson)
   }
 
   useEffect(() => {
@@ -18,13 +21,13 @@ function App() {
 
   return (
     <>
-      <Nav />
+      <Nav data={data} setFilter={setFilter} />
       <div id='mainConteiner'>
         <UlLocation />
         <div id='publications'>
-          {data.map((info, index) => (
-            <Card key={index} info={info} img={info.photo} superHost={info.superHost} cualyties={info.type} beds={info.beds} calification={info.rating} place={info.title} />
-          ) )
+          {filterCard.map((info, index) => (
+            <Card key={index} info={info}/>
+          ))
           }
         </div>
       </div>

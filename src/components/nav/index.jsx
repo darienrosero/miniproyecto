@@ -2,27 +2,20 @@
 import React, { useState } from 'react'
 import './style.css'
 
-const Nav = () => {
+const Nav = ({data, setFilter}) => {
 
-    const [location, setLocation] = useState([])
-    const [guest, setGuest] = useState([])
-    const [data, setData] = useState([])
+    const [location, locationSearch] = useState('')
+    const [guests , setGuests] = useState('')
 
-  
+    function filterData() {
+      const rs = data.filter(info => {
 
-    const cambioLocation = async(e) => {
-      setLocation(e.target.value);
-    };
+        const locationSearch = location === '' || info.city.toLowerCase() === location.toLowerCase()
+        const guestsSearch = info.maxGuests >= guests
+        return locationSearch && guestsSearch
 
-    const cambioGuest = async (e) => {
-      setGuest(e.target.value);
-    };
-
-    const buttonSearch = async () =>{
-      console.log(location)
-      console.log(guest)
-
-
+      })
+      setFilter(rs)
     }
 
   return (
@@ -32,13 +25,18 @@ const Nav = () => {
 
       <div className='serch'>
 
-        <input id='location' className='buttonSerch' placeholder="Ubicación" value={location} onChange={cambioLocation}/>
-        <input id='guest' type='number' min={0} className='buttonSerch' placeholder="Add guests" value={guest} onChange={cambioGuest}/>
-        <button id='confirm' className='buttonSerch' onClick={buttonSearch}> <img src="/logos/search.png" /></button>
+        <select id='location' className='buttonSerch' value={location} onChange={(e) => locationSearch(e.target.value)} >
+            <option value="">Locations</option>
+            <option value="Helsinki"> Helsinki</option>
+            <option value="Turku">Turku</option>
+            <option value="Vaasa">Vaasa</option>
+            <option value="Oulu">Oulu</option>
+          </select>
+        <input id='guest' type='number' max={10} min={0} className='buttonSerch' placeholder="Add guests" value={guests} onChange={(e) => setGuests(parseInt(e.target.value))} />
+        <button id='confirm' className='buttonSerch' onClick={filterData} > <img src="/logos/search.png" /></button>
 
       </div>
     </nav>
   )
 }
-
 export default Nav
